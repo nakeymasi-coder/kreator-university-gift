@@ -94,6 +94,12 @@ textarea{width:100%;min-height:150px;background:rgba(16,12,3,.8);color:#fdf6dd;b
 @keyframes fall{to{transform:translateY(105dvh) rotate(300deg);opacity:.2}}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-iteration-count:1!important;transition-duration:.01s!important}}
 </style>
+<style id="brand-lock">
+.wm{position:fixed;inset:0;z-index:1;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27560%27%20height%3D%27200%27%3E%3Ctext%20x%3D%270%27%20y%3D%27110%27%20font-family%3D%27Arial%20Black%2CArial%27%20font-size%3D%2725%27%20font-weight%3D%27900%27%20letter-spacing%3D%273%27%20fill%3D%27%23ffe9a3%27%20fill-opacity%3D%270.08%27%20transform%3D%27rotate%28-22%20280%20100%29%27%3EKENDRA%20KREATEDIT%20%E2%80%A2%20KREATOR%20UNIVERSITY%20%20%20%E2%80%A2%20%20%20KENDRA%20KREATEDIT%20%E2%80%A2%20KREATOR%20UNIVERSITY%20%20%20%E2%80%A2%20%20%20KENDRA%20KREATEDIT%20%E2%80%A2%20KREATOR%20UNIVERSITY%20%20%20%E2%80%A2%20%20%20%3C%2Ftext%3E%3C%2Fsvg%3E");background-repeat:repeat;background-size:560px 200px}
+.stage .stamp{position:absolute;right:10px;bottom:10px;z-index:4;background:rgba(10,6,18,.66);border:1px solid rgba(255,215,106,.55);color:#ffe9a3;border-radius:999px;padding:5px 12px;font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;backdrop-filter:blur(3px)}
+.exclusive{display:inline-block;margin-top:2px;background:rgba(255,215,106,.14);border:1px solid rgba(255,215,106,.6);color:#ffe9a3;border-radius:999px;padding:7px 16px;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;box-shadow:0 0 18px rgba(255,215,106,.28)}
+.ownline{font-size:13.5px;color:#e9dcff;line-height:1.65}
+</style>
 </head>
 <body>
 <div class="brandbg" aria-hidden="true">
@@ -103,6 +109,7 @@ textarea{width:100%;min-height:150px;background:rgba(16,12,3,.8);color:#fdf6dd;b
   <img class="ghost g2" src="img/st3.png" alt="">
   <img class="ghost g3" src="img/st5.png" alt="">
 </div>
+<div class="wm" aria-hidden="true"></div>
 <canvas id="sparkles"></canvas>
 <div class="wrap">
 
@@ -112,6 +119,7 @@ textarea{width:100%;min-height:150px;background:rgba(16,12,3,.8);color:#fdf6dd;b
   <img class="float f2" src="img/st5.png" alt="">
   <div style="height:22px"></div>
   <span class="tag">A gift for Kendra Kreatedit 💛</span>
+  <span class="exclusive">🔒 Made exclusively for her</span>
   <div class="ring"><img class="giftbox" src="img/gift.png" alt="Your gift" onclick="openGift()"></div>
   <h1 class="marq">Your gift<br><span class="gold-text">is here</span></h1>
   <p class="small">From Glam, with love — for the Kreator herself,<br>of Kreator University · The Kreative Kommunity.</p>
@@ -183,6 +191,7 @@ textarea{width:100%;min-height:150px;background:rgba(16,12,3,.8);color:#fdf6dd;b
   <h2 class="marq">Create. Automate.<br><span class="gold-text">Elevate. Monetize.</span></h2>
   <div class="rule"></div>
   <p class="quote">You teach everybody else how to turn their creativity into income. This time, the gift is <b>for the teacher.</b> Thank you for all that you do, Kendra. 🖤💛</p>
+  <p class="ownline">Made <b>exclusively</b> for Kendra Kreatedit · Kreator University.<br>Her character. Her colors. Her generator.</p>
   <p class="credit">Gifted with love by Glam · Glam Hustle Hub ✨<br>Made for Kendra Kreatedit · Kreator University</p>
   <button class="btn pink" onclick="go(0)">↺ Open it again</button>
 </section>
@@ -210,6 +219,10 @@ function cannons(){confettiAt(innerWidth*.5,innerHeight*.32,64);setTimeout(()=>{
 document.querySelector('.giftbox').addEventListener('pointerdown',e=>confettiAt(e.clientX||innerWidth/2,e.clientY||innerHeight/2,40));
 /* ambient sparkle field */
 (function(){const cv=document.getElementById('sparkles'),ctx=cv.getContext('2d');let W,H;const ps=[];function size(){const d=Math.min(devicePixelRatio||1,2);W=cv.width=innerWidth*d;H=cv.height=innerHeight*d;cv.style.width=innerWidth+'px';cv.style.height=innerHeight+'px'}size();addEventListener('resize',size);for(let i=0;i<60;i++)ps.push({x:Math.random(),y:Math.random(),r:1.1+Math.random()*3,s:.00022+Math.random()*.0005,ph:Math.random()*6.28,c:COLORS[i%COLORS.length],dr:(Math.random()-.5)*.00012});(function loop(t){ctx.clearRect(0,0,W,H);ps.forEach(p=>{p.y-=p.s;p.x+=p.dr+Math.sin(t/1600+p.ph)*.00004;if(p.y<-.02){p.y=1.02;p.x=Math.random()}const tw=.35+.65*Math.abs(Math.sin(t/700+p.ph));ctx.globalAlpha=tw*.9;ctx.fillStyle=p.c;ctx.shadowColor=p.c;ctx.shadowBlur=8;ctx.beginPath();ctx.arc(p.x*W,p.y*H,p.r*(W/900+.6),0,6.29);ctx.fill()});ctx.globalAlpha=1;requestAnimationFrame(loop)})(0)})();
+</script>
+
+<script id="brand-stamps">
+document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.stage').forEach(function(s){var el=document.createElement('span');el.className='stamp';el.textContent='© Kendra Kreatedit · Kreator University';s.appendChild(el)})});
 </script>
 </body>
 </html>
