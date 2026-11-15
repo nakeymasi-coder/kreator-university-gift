@@ -55,7 +55,7 @@ textarea{width:100%;min-height:150px;background:#0d0b06;color:#fdf6dd;border:1px
 <div class="wrap">
 
 <!-- COVER -->
-<section class="screen active" data-screen>
+<section class="screen active" data-screen><img class="fx-float f1" src="img/st2.png" alt=""><img class="fx-float f2" src="img/st5.png" alt="">
   <div style="height:26px"></div>
   <span class="tag">A gift for Kendra Kreatedit 💛</span>
   <div class="ring"><div class="giftbox">🎁</div></div>
@@ -194,8 +194,8 @@ var cv=document.createElement('canvas');cv.id='fx-canvas';document.body.prepend(
 var ctx=cv.getContext('2d'),W,H,ps=[];
 function size(){var d=Math.min(window.devicePixelRatio||1,2);W=cv.width=innerWidth*d;H=cv.height=innerHeight*d;cv.style.width=innerWidth+'px';cv.style.height=innerHeight+'px'}
 size();addEventListener('resize',size);
-for(var i=0;i<44;i++)ps.push({x:Math.random(),y:Math.random(),r:.8+Math.random()*2.1,s:.00022+Math.random()*.0005,ph:Math.random()*6.28,c:COLORS[i%COLORS.length],dr:(Math.random()-.5)*.00012});
-(function loop(t){ctx.clearRect(0,0,W,H);ps.forEach(function(p){p.y-=p.s;p.x+=p.dr+Math.sin(t/1600+p.ph)*.00004;if(p.y<-.02){p.y=1.02;p.x=Math.random()}var tw=.35+.65*Math.abs(Math.sin(t/700+p.ph));ctx.globalAlpha=tw*.75;ctx.fillStyle=p.c;ctx.shadowColor=p.c;ctx.shadowBlur=8;ctx.beginPath();ctx.arc(p.x*W,p.y*H,p.r*(W/900+0.6),0,6.29);ctx.fill()});ctx.globalAlpha=1;requestAnimationFrame(loop)})(0);
+for(var i=0;i<66;i++)ps.push({x:Math.random(),y:Math.random(),r:1.1+Math.random()*3.1,s:.00022+Math.random()*.0005,ph:Math.random()*6.28,c:COLORS[i%COLORS.length],dr:(Math.random()-.5)*.00012});
+(function loop(t){ctx.clearRect(0,0,W,H);ps.forEach(function(p){p.y-=p.s;p.x+=p.dr+Math.sin(t/1600+p.ph)*.00004;if(p.y<-.02){p.y=1.02;p.x=Math.random()}var tw=.35+.65*Math.abs(Math.sin(t/700+p.ph));ctx.globalAlpha=tw*.92;ctx.fillStyle=p.c;ctx.shadowColor=p.c;ctx.shadowBlur=8;ctx.beginPath();ctx.arc(p.x*W,p.y*H,p.r*(W/900+0.6),0,6.29);ctx.fill()});ctx.globalAlpha=1;requestAnimationFrame(loop)})(0);
 /* confetti burst */
 window.fxBurst=function(x,y,n){n=n||42;for(var i=0;i<n;i++){var el=document.createElement('div');el.className='fx-confetti';el.style.background=COLORS[i%COLORS.length];el.style.left=x+'px';el.style.top=y+'px';document.body.appendChild(el);var a=Math.random()*6.28,v=120+Math.random()*260,dx=Math.cos(a)*v,dy=Math.sin(a)*v-190,rot=Math.random()*540-270;el.animate([{transform:'translate(0,0) rotate(0deg)',opacity:1},{transform:'translate('+dx+'px,'+(dy+330)+'px) rotate('+rot+'deg)',opacity:0}],{duration:950+Math.random()*550,easing:'cubic-bezier(.17,.67,.35,1)'}).onfinish=(function(e){return function(){e.remove()}})(el)}};
 /* bursts: gift tap + finale screen */
@@ -211,5 +211,14 @@ document.addEventListener('click',function(e){var b=e.target.closest?e.target.cl
 });
 })();
 </script>
+
+<style id="fx2-style">
+.screen{position:relative;overflow:hidden}
+.fx-float{position:absolute;width:96px;z-index:3;pointer-events:none;filter:drop-shadow(0 12px 20px rgba(0,0,0,.5));animation:fxBob 4.2s ease-in-out infinite}
+.fx-float.f1{top:64px;left:-14px;transform:rotate(-10deg)}
+.fx-float.f2{bottom:118px;right:-12px;width:84px;transform:rotate(9deg);animation-delay:-2.1s}
+@keyframes fxBob{0%,100%{margin-top:0}50%{margin-top:-14px}}
+.giftbox{filter:drop-shadow(0 0 26px rgba(255,215,106,.45))}
+</style>
 </body>
 </html>
