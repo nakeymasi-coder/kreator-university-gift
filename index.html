@@ -8,68 +8,123 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
-<meta name="theme-color" content="#0a0a0f">
+<meta name="theme-color" content="#171106">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-:root{--pink:#ff2e88;--purple:#8b2fe0;--gold:#f5c542;--gold2:#ffe9a3;--ink:#0a0a0f;--card:#16130b}
-body{background:radial-gradient(1200px 800px at 50% -10%,#3a2c07 0%,var(--ink) 55%);color:#fff;font-family:Montserrat,system-ui,sans-serif;min-height:100dvh;overflow-x:hidden}
-.wrap{max-width:520px;margin:0 auto;padding:18px 16px 30px;min-height:100dvh;display:flex;flex-direction:column}
-h1,h2{font-family:Anton,Impact,sans-serif;letter-spacing:.5px;line-height:1.05;text-transform:uppercase}
-.gold-text{background:linear-gradient(180deg,var(--gold2),var(--gold) 55%,#c9931b);-webkit-background-clip:text;background-clip:text;color:transparent}
-.pink-text{color:var(--pink)}
-.screen{display:none;flex-direction:column;align-items:center;text-align:center;gap:14px;animation:fade .45s ease both}
-.screen.active{display:flex}
-@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.giftbox{font-size:110px;filter:drop-shadow(0 0 34px rgba(255,46,136,.65));animation:bob 2.2s ease-in-out infinite}
-@keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-12px) rotate(2deg)}}
-.ring{border:2px solid rgba(245,197,66,.6);border-radius:50%;padding:26px;box-shadow:0 0 60px rgba(245,197,66,.35),inset 0 0 40px rgba(245,197,66,.18);animation:pulse 2.2s ease-in-out infinite}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
-.btn{font-family:Anton,Impact,sans-serif;text-transform:uppercase;letter-spacing:1px;font-size:19px;color:#14091f;background:linear-gradient(180deg,var(--gold2),var(--gold));border:none;border-radius:999px;padding:15px 34px;cursor:pointer;box-shadow:0 6px 26px rgba(245,197,66,.45);transition:transform .15s}
-.btn:active{transform:scale(.96)}
-.btn.pink{background:linear-gradient(180deg,#ffe9a3,var(--gold));color:#14091f;box-shadow:0 6px 26px rgba(245,197,66,.5)}
-.btn.ghost{background:transparent;color:var(--gold2);border:2px solid rgba(245,197,66,.6);box-shadow:none;font-size:15px;padding:11px 24px}
-.card{background:linear-gradient(180deg,#1c180d,var(--card));border:1px solid rgba(245,197,66,.35);border-radius:22px;padding:20px 18px;box-shadow:0 10px 40px rgba(0,0,0,.5)}
-.card p{font-size:16.5px;line-height:1.55;color:#fdf6dd}
-img.art{width:100%;border-radius:18px;border:1px solid rgba(245,197,66,.55);box-shadow:0 12px 44px rgba(245,197,66,.22)}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%}
-.grid figure{background:#12100a;border:1px solid rgba(245,197,66,.4);border-radius:16px;padding:10px}
-.grid img{width:100%;border-radius:10px}
-.grid figcaption{font-size:12.5px;font-weight:800;color:var(--gold2);margin-top:7px;text-transform:uppercase;letter-spacing:.6px}
-.nav{margin-top:auto;padding-top:18px;display:flex;align-items:center;justify-content:space-between;width:100%}
+:root{--pink:#ff2e88;--pinksoft:#ff6aa9;--gold:#f5c542;--gold2:#ffe9a3;--spring:cubic-bezier(.22,1.35,.36,1);--ease:cubic-bezier(.22,1,.36,1)}
+html,body{height:100%}
+body{color:#fff;font-family:Montserrat,system-ui,sans-serif;min-height:100dvh;overflow-x:hidden;background:radial-gradient(60% 44% at 16% -4%,rgba(255,196,48,.46),transparent 62%),radial-gradient(56% 46% at 86% 8%,rgba(255,120,40,.3),transparent 65%),radial-gradient(75% 55% at 50% 110%,rgba(255,46,136,.22),transparent 62%),linear-gradient(180deg,#2b1f08 0%,#171106 55%,#241a09 100%);background-attachment:fixed}
+h1,h2{font-family:Anton,Impact,sans-serif;letter-spacing:.5px;line-height:1.04;text-transform:uppercase}
+.gold-text{background:linear-gradient(100deg,#c9931b 0%,var(--gold) 30%,#fff3c4 50%,var(--gold) 70%,#c9931b 100%);background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 3.2s linear infinite}
+@keyframes shine{to{background-position:220% center}}
+.pink-text{color:var(--pinksoft)}
+/* ——— HER BRAND, IN THE BACKGROUND ——— */
+.brandbg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.brandbg img.board{position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;opacity:.16;filter:saturate(1.2);animation:brandPan 36s ease-in-out infinite alternate}
+@keyframes brandPan{from{transform:scale(1.02) translate(0,0)}to{transform:scale(1.1) translate(-2.5%,-2%)}}
+.brandbg .veil{position:absolute;inset:0;background:radial-gradient(90% 70% at 50% 40%,transparent 40%,rgba(16,11,2,.55) 100%)}
+.ghost{position:absolute;width:120px;opacity:.17;filter:drop-shadow(0 0 14px rgba(255,215,106,.4));animation:drift 11s ease-in-out infinite}
+.ghost.g1{top:6%;left:-18px;transform:rotate(-12deg)}
+.ghost.g2{top:44%;right:-24px;width:104px;animation-delay:-4s;transform:rotate(10deg)}
+.ghost.g3{bottom:4%;left:6%;width:88px;animation-delay:-7s;transform:rotate(6deg)}
+@keyframes drift{0%,100%{margin-top:0}50%{margin-top:-20px}}
+#sparkles{position:fixed;inset:0;z-index:1;pointer-events:none}
+.wrap{position:relative;z-index:2;max-width:540px;margin:0 auto;min-height:100dvh;display:flex;flex-direction:column;padding:0 14px}
+/* ——— SCREENS / STAGE ——— */
+.screen{display:none;flex-direction:column;align-items:center;text-align:center;flex:1;position:relative;padding:20px 4px 8px}
+.screen.active{display:flex;animation:stageIn .6s var(--ease) both}
+@keyframes stageIn{from{opacity:0;transform:scale(.975)}to{opacity:1;transform:none}}
+.screen.active>*{animation:rise .75s var(--ease) both}
+.screen.active>*:nth-child(1){animation-delay:.04s}.screen.active>*:nth-child(2){animation-delay:.13s}
+.screen.active>*:nth-child(3){animation-delay:.22s}.screen.active>*:nth-child(4){animation-delay:.31s}
+.screen.active>*:nth-child(5){animation-delay:.4s}.screen.active>*:nth-child(6){animation-delay:.49s}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.tag{display:inline-block;background:rgba(245,197,66,.16);border:1px solid rgba(245,197,66,.65);color:var(--gold2);border-radius:999px;padding:7px 16px;font-size:12.5px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;box-shadow:0 0 18px rgba(245,197,66,.3)}
+.marq{font-size:clamp(42px,11.5vw,62px);text-shadow:0 6px 34px rgba(0,0,0,.35)}
+.mid{font-size:clamp(30px,8vw,42px)}
+.small{font-size:15px;color:#f2e7c8;line-height:1.6;max-width:44ch}
+.credit{font-size:13px;color:#cbbd8f;line-height:1.7}
+/* cover */
+.giftbox{font-size:118px;cursor:pointer;filter:drop-shadow(0 0 38px rgba(245,197,66,.65));animation:bob 2.6s ease-in-out infinite;transition:transform .2s var(--spring)}
+.giftbox:active{transform:scale(.92) rotate(-3deg)}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-13px) rotate(2deg)}}
+.ring{border:2px solid rgba(245,197,66,.6);border-radius:50%;padding:30px;box-shadow:0 0 70px rgba(245,197,66,.4),inset 0 0 46px rgba(245,197,66,.2);animation:pulse 2.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
+.float{position:absolute;z-index:3;pointer-events:none;animation:bob2 4.4s ease-in-out infinite}
+.float.f1{top:70px;left:2px;width:92px;transform:rotate(-9deg);filter:drop-shadow(0 0 16px rgba(255,215,106,.6)) drop-shadow(0 10px 14px rgba(0,0,0,.35))}
+.float.f2{bottom:150px;right:2px;width:82px;transform:rotate(8deg);animation-delay:-2.2s;filter:drop-shadow(0 0 16px rgba(255,120,180,.55)) drop-shadow(0 10px 14px rgba(0,0,0,.35))}
+@keyframes bob2{0%,100%{margin-top:0}50%{margin-top:-14px}}
+/* full-stage art */
+.stage{position:relative;width:calc(100% + 8px);border-radius:26px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.45),0 0 0 1px rgba(255,215,106,.45),0 0 44px rgba(245,197,66,.28)}
+.stage .blurbg{position:absolute;inset:0;background-size:cover;background-position:center;filter:blur(26px) brightness(.78) saturate(1.25);transform:scale(1.25)}
+.stage img.main{position:relative;width:100%;display:block;animation:kenburns 14s ease-in-out infinite alternate}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.045)}}
+.stage .scrim{position:absolute;left:0;right:0;bottom:0;height:44%;background:linear-gradient(180deg,transparent,rgba(14,10,2,.82));pointer-events:none}
+/* quote (no boxes — a stage quote) */
+.quote{font-size:19px;line-height:1.6;color:#fffdf4;max-width:42ch;text-shadow:0 2px 18px rgba(0,0,0,.4)}
+.quote b{color:var(--gold2)}
+.rule{width:64px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--gold),#fff3c4);margin:4px auto;box-shadow:0 0 14px rgba(245,197,66,.65)}
+/* sticker wall — floating, no boxes */
+.wall{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 2px;width:100%;padding-top:6px}
+.wall figure{width:47%;display:flex;flex-direction:column;align-items:center}
+.wall img{width:100%;max-width:215px;filter:drop-shadow(0 0 16px rgba(255,215,106,.4)) drop-shadow(0 16px 22px rgba(0,0,0,.4));animation:bob2 5s ease-in-out infinite}
+.wall figure:nth-child(2n) img{animation-delay:-1.6s}.wall figure:nth-child(3n) img{animation-delay:-3.1s}
+.wall figcaption{font-size:12px;font-weight:800;color:var(--gold2);text-transform:uppercase;letter-spacing:.7px;margin-top:2px;text-shadow:0 2px 10px rgba(0,0,0,.5)}
+.screen.active .wall figure{animation:pop .6s var(--spring) both}
+.screen.active .wall figure:nth-child(1){animation-delay:.1s}.screen.active .wall figure:nth-child(2){animation-delay:.2s}
+.screen.active .wall figure:nth-child(3){animation-delay:.3s}.screen.active .wall figure:nth-child(4){animation-delay:.4s}
+.screen.active .wall figure:nth-child(5){animation-delay:.5s}.screen.active .wall figure:nth-child(6){animation-delay:.6s}
+@keyframes pop{from{opacity:0;transform:scale(.6) rotate(-5deg)}to{opacity:1;transform:scale(1) rotate(0)}}
+/* buttons + nav */
+.btn{position:relative;overflow:hidden;font-family:Anton,Impact,sans-serif;text-transform:uppercase;letter-spacing:1px;font-size:19px;color:#2a1c04;background:linear-gradient(180deg,var(--gold2),var(--gold));border:none;border-radius:999px;padding:16px 36px;cursor:pointer;box-shadow:0 8px 30px rgba(245,197,66,.5);transition:transform .16s var(--spring)}
+.btn:active{transform:scale(.94)}
+.btn::after{content:"";position:absolute;top:0;left:-80%;width:55%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:sheen 3.8s ease-in-out infinite}
+@keyframes sheen{0%,55%{left:-80%}85%,100%{left:130%}}
+.btn.pink{background:linear-gradient(180deg,var(--gold2),var(--gold));color:#2a1c04;box-shadow:0 8px 30px rgba(245,197,66,.55)}
+.btn.ghost{background:rgba(22,16,4,.5);color:var(--gold2);border:2px solid rgba(245,197,66,.65);box-shadow:none;font-size:15px;padding:11px 24px;backdrop-filter:blur(4px)}
+.nav{margin-top:auto;padding:16px 2px 22px;display:flex;align-items:center;justify-content:space-between;width:100%}
 .dots{display:flex;gap:6px}
-.dot{width:8px;height:8px;border-radius:50%;background:#4a3f22}
-.dot.on{background:var(--gold);box-shadow:0 0 10px var(--gold)}
-textarea{width:100%;min-height:150px;background:#0d0b06;color:#fdf6dd;border:1px solid rgba(245,197,66,.55);border-radius:14px;padding:12px;font-family:Montserrat,sans-serif;font-size:13.5px;line-height:1.5;resize:vertical}
-.tag{display:inline-block;background:rgba(245,197,66,.14);border:1px solid rgba(245,197,66,.6);color:var(--gold2);border-radius:999px;padding:6px 14px;font-size:12.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase}
-.big{font-size:clamp(38px,10vw,54px)}
-.mid{font-size:clamp(27px,7.4vw,36px)}
-.small{font-size:14.5px;color:#e8dcbb;line-height:1.55}
-.credit{font-size:13px;color:#b3a67f}
-.sparkle{position:fixed;pointer-events:none;font-size:20px;animation:fall linear forwards;z-index:50}
+.dot{width:8px;height:8px;border-radius:99px;background:rgba(255,255,255,.28);transition:all .4s var(--spring)}
+.dot.on{width:22px;background:var(--gold);box-shadow:0 0 12px var(--gold)}
+textarea{width:100%;min-height:150px;background:rgba(16,12,3,.8);color:#fdf6dd;border:1px solid rgba(245,197,66,.6);border-radius:16px;padding:13px;font-family:Montserrat,sans-serif;font-size:13.5px;line-height:1.55;resize:vertical;backdrop-filter:blur(4px)}
+.confetti{position:fixed;width:9px;height:14px;z-index:99;pointer-events:none;border-radius:2px}
+.sparkle{position:fixed;pointer-events:none;font-size:20px;animation:fall linear forwards;z-index:60}
 @keyframes fall{to{transform:translateY(105dvh) rotate(300deg);opacity:.2}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-iteration-count:1!important;transition-duration:.01s!important}}
 </style>
 </head>
 <body>
+<div class="brandbg" aria-hidden="true">
+  <img class="board" src="img/board.png" alt="">
+  <div class="veil"></div>
+  <img class="ghost g1" src="img/st1.png" alt="">
+  <img class="ghost g2" src="img/st3.png" alt="">
+  <img class="ghost g3" src="img/st5.png" alt="">
+</div>
+<canvas id="sparkles"></canvas>
 <div class="wrap">
 
 <!-- COVER -->
-<section class="screen active" data-screen><img class="fx-float f1" src="img/st2.png" alt=""><img class="fx-float f2" src="img/st5.png" alt="">
-  <div style="height:26px"></div>
+<section class="screen active" data-screen>
+  <img class="float f1" src="img/st2.png" alt="">
+  <img class="float f2" src="img/st5.png" alt="">
+  <div style="height:22px"></div>
   <span class="tag">A gift for Kendra Kreatedit 💛</span>
-  <div class="ring"><div class="giftbox">🎁</div></div>
-  <h1 class="big">Your gift<br><span class="gold-text">is here</span></h1>
+  <div class="ring"><div class="giftbox" onclick="openGift()">🎁</div></div>
+  <h1 class="marq">Your gift<br><span class="gold-text">is here</span></h1>
   <p class="small">From Glam, with love — for the Kreator herself,<br>of Kreator University · The Kreative Kommunity.</p>
   <button class="btn" onclick="openGift()">Tap to open 🎀</button>
 </section>
 
 <!-- GLAMIFIED -->
 <section class="screen" data-screen>
-  <div style="height:30px"></div>
-  <div style="font-size:74px">✨🦋✨</div>
-  <h1 class="big">You’ve been<br><span class="gold-text">Glamified!</span></h1>
-  <div class="card"><p>Kendra — night after night you show up and build generators live for your Kreators, and you ask for nothing back. This is a little thank you for all that you do. 💛</p></div>
+  <div style="height:26px"></div>
+  <div style="font-size:76px;filter:drop-shadow(0 0 24px rgba(255,215,106,.6))">✨🦋✨</div>
+  <h1 class="marq">You’ve been<br><span class="gold-text">Glamified!</span></h1>
+  <div class="rule"></div>
+  <p class="quote">Kendra — night after night you show up and build generators live for your Kreators, and you ask for nothing back. This is a little thank you <b>for all that you do.</b> 💛</p>
   <button class="btn pink" onclick="go(2)">See your gift →</button>
 </section>
 
@@ -77,7 +132,7 @@ textarea{width:100%;min-height:150px;background:#0d0b06;color:#fdf6dd;border:1px
 <section class="screen" data-screen>
   <span class="tag">The piece 🎬</span>
   <h2 class="mid">Learn it. Kreate it.<br><span class="gold-text">Launch it.</span></h2>
-  <img class="art" src="img/hero.png" alt="Kendra at her generator — Kreator University">
+  <div class="stage"><div class="blurbg" style="background-image:url('img/hero.png')"></div><img class="main" src="img/hero.png" alt="Kendra at her generator — Kreator University"><div class="scrim"></div></div>
   <p class="small">You, at your generator, doing what you do every night — turning ideas into digital income while the creations fly. ✨</p>
 </section>
 
@@ -85,7 +140,7 @@ textarea{width:100%;min-height:150px;background:#0d0b06;color:#fdf6dd;border:1px
 <section class="screen" data-screen>
   <span class="tag">Your character ⭐</span>
   <h2 class="mid">She’s <span class="gold-text">yours to name</span></h2>
-  <img class="art" src="img/sheet.png" alt="Kendra's character sheet with blank nameplate">
+  <div class="stage"><div class="blurbg" style="background-image:url('img/sheet.png')"></div><img class="main" src="img/sheet.png" alt="Kendra's character sheet with blank nameplate"><div class="scrim"></div></div>
   <p class="small">Your very own reusable character, in your black and gold. See the empty nameplate at the top? Naming her is YOUR honor, boo. 💛</p>
 </section>
 
@@ -93,7 +148,7 @@ textarea{width:100%;min-height:150px;background:#0d0b06;color:#fdf6dd;border:1px
 <section class="screen" data-screen>
   <span class="tag">Your brand board 🎨</span>
   <h2 class="mid">Kreator <span class="gold-text">University</span></h2>
-  <img class="art" src="img/board.png" alt="Kreator University brand board">
+  <div class="stage"><div class="blurbg" style="background-image:url('img/board.png')"></div><img class="main" src="img/board.png" alt="Kreator University brand board"><div class="scrim"></div></div>
   <p class="small">Your character, your generator, your colors — <b>Where Ideas Become Digital Income.</b> Use her anywhere, any time. She’s yours.</p>
 </section>
 
@@ -101,7 +156,7 @@ textarea{width:100%;min-height:150px;background:#0d0b06;color:#fdf6dd;border:1px
 <section class="screen" data-screen>
   <span class="tag">Your sticker pack 💛</span>
   <h2 class="mid">Made for your <span class="gold-text">lives & community</span></h2>
-  <div class="grid">
+  <div class="wall">
     <figure><img src="img/st1.png" alt="Hey Kreators sticker"><figcaption>Hey, Kreators!</figcaption></figure>
     <figure><img src="img/st2.png" alt="Learn It Kreate It Launch It sticker"><figcaption>Learn It. Kreate It. Launch It.</figcaption></figure>
     <figure><img src="img/st3.png" alt="Kreate sticker"><figcaption>Kreate!</figcaption></figure>
@@ -125,8 +180,9 @@ textarea{width:100%;min-height:150px;background:#0d0b06;color:#fdf6dd;border:1px
 <!-- FINALE -->
 <section class="screen" data-screen>
   <span class="tag">From Glam 💛</span>
-  <h2 class="mid">Create. Automate.<br><span class="gold-text">Elevate. Monetize.</span></h2>
-  <div class="card"><p>You teach everybody else how to turn their creativity into income. This time, the gift is for the teacher. Thank you for all that you do, Kendra. 🖤💛</p></div>
+  <h2 class="marq">Create. Automate.<br><span class="gold-text">Elevate. Monetize.</span></h2>
+  <div class="rule"></div>
+  <p class="quote">You teach everybody else how to turn their creativity into income. This time, the gift is <b>for the teacher.</b> Thank you for all that you do, Kendra. 🖤💛</p>
   <p class="credit">Gifted with love by Glam · Glam Hustle Hub ✨<br>Made for Kendra Kreatedit · Kreator University</p>
   <button class="btn pink" onclick="go(0)">↺ Open it again</button>
 </section>
@@ -142,107 +198,18 @@ const screens=[...document.querySelectorAll('[data-screen]')];
 const dotsBox=document.getElementById('dots');
 screens.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' on':'');dotsBox.appendChild(d)});
 let cur=0;
-function go(i){screens[cur].classList.remove('active');cur=Math.max(0,Math.min(screens.length-1,i));screens[cur].classList.add('active');[...dotsBox.children].forEach((d,j)=>d.classList.toggle('on',j===cur));document.getElementById('nav').style.visibility=cur===0?'hidden':'visible';window.scrollTo({top:0,behavior:'smooth'})}
+function go(i){screens[cur].classList.remove('active');cur=Math.max(0,Math.min(screens.length-1,i));screens[cur].classList.add('active');[...dotsBox.children].forEach((d,j)=>d.classList.toggle('on',j===cur));document.getElementById('nav').style.visibility=cur===0?'hidden':'visible';window.scrollTo({top:0,behavior:'smooth'});if(cur===screens.length-1)setTimeout(cannons,420)}
 function step(d){go(cur+d)}
-function openGift(){burst();go(1)}
-function burst(){const em=['✨','💜','⭐','🎉','💛'];for(let i=0;i<26;i++){const s=document.createElement('div');s.className='sparkle';s.textContent=em[i%em.length];s.style.left=(Math.random()*96)+'vw';s.style.top='-30px';s.style.animationDuration=(1.4+Math.random()*1.6)+'s';document.body.appendChild(s);setTimeout(()=>s.remove(),3400)}}
+function openGift(){burst();cannons();go(1)}
+function burst(){const em=['✨','💛','⭐','🎉','🖤'];for(let i=0;i<26;i++){const s=document.createElement('div');s.className='sparkle';s.textContent=em[i%em.length];s.style.left=(Math.random()*96)+'vw';s.style.top='-30px';s.style.animationDuration=(1.4+Math.random()*1.6)+'s';document.body.appendChild(s);setTimeout(()=>s.remove(),3400)}}
 function copyT(id,btn){const t=document.getElementById(id);t.select();t.setSelectionRange(0,99999);navigator.clipboard.writeText(t.value).then(()=>{const o=btn.textContent;btn.textContent='Copied! ✓';setTimeout(()=>btn.textContent=o,1600)})}
-</script>
-<style id="fx-style">
-/* ===== GLAMIFIED FX LAYER — motion + interaction polish ===== */
-:root{--fx-spring:cubic-bezier(.22,1.4,.36,1);--fx-ease:cubic-bezier(.22,1,.36,1)}
-#fx-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:.85}
-.wrap{position:relative;z-index:2}
-.screen{display:none}
-.screen.active{display:flex;animation:fxScreenIn .65s var(--fx-ease) both}
-@keyframes fxScreenIn{from{opacity:0;transform:translateY(26px) scale(.985)}to{opacity:1;transform:none}}
-.screen.active>*{animation:fxRise .7s var(--fx-ease) both}
-.screen.active>*:nth-child(1){animation-delay:.05s}.screen.active>*:nth-child(2){animation-delay:.14s}
-.screen.active>*:nth-child(3){animation-delay:.23s}.screen.active>*:nth-child(4){animation-delay:.32s}
-.screen.active>*:nth-child(5){animation-delay:.41s}.screen.active>*:nth-child(6){animation-delay:.5s}
-@keyframes fxRise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
-.giftbox{animation:fxFloat 3.2s ease-in-out infinite;cursor:pointer;transition:transform .25s var(--fx-spring)}
-.giftbox:active{transform:scale(.93) rotate(-2deg)}
-@keyframes fxFloat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-12px) rotate(1.2deg)}}
-.art img,.card img{animation:fxBreathe 5s ease-in-out infinite;will-change:transform}
-@keyframes fxBreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.018)}}
-.gold-text{background-size:220% auto!important;animation:fxShine 3.4s linear infinite}
-@keyframes fxShine{to{background-position:220% center}}
-.btn{position:relative;overflow:hidden;transition:transform .18s var(--fx-spring),box-shadow .3s}
-.btn:active{transform:scale(.95)}
-.btn::after{content:"";position:absolute;top:0;left:-80%;width:55%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg);animation:fxSheen 3.8s ease-in-out infinite}
-@keyframes fxSheen{0%,55%{left:-80%}85%,100%{left:130%}}
-.ring{animation:fxRingPulse 2.6s ease-in-out infinite}
-@keyframes fxRingPulse{0%,100%{box-shadow:0 0 0 0 rgba(255,215,106,.0),0 0 34px 2px rgba(255,215,106,.25)}50%{box-shadow:0 0 0 6px rgba(255,215,106,.06),0 0 54px 8px rgba(255,215,106,.45)}}
-.tag{animation:fxTagGlow 3s ease-in-out infinite}
-@keyframes fxTagGlow{0%,100%{filter:brightness(1)}50%{filter:brightness(1.22)}}
-.dots i{transition:all .45s var(--fx-spring)}
-.grid .card{transition:transform .3s var(--fx-spring)}
-.grid .card:active{transform:scale(.96) rotate(-1deg)}
-.fx-confetti{position:fixed;width:9px;height:14px;z-index:99;pointer-events:none;border-radius:2px}
-.fx-pop{animation:fxPop .45s var(--fx-spring)}
-@keyframes fxPop{0%{transform:scale(1)}40%{transform:scale(1.12)}100%{transform:scale(1)}}
-@media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-iteration-count:1!important;transition-duration:.01s!important}}
-</style>
-<script id="fx-js">
-(function(){
-var COLORS=['#ffd76a','#f7c948','#ffffff','#ff4fa3'];
-function ready(fn){document.readyState!=='loading'?fn():document.addEventListener('DOMContentLoaded',fn)}
-ready(function(){
+/* confetti cannons */
+const COLORS=['#ffd76a','#f7c948','#ffffff','#ff4fa3'];
+function confettiAt(x,y,n){for(let i=0;i<n;i++){const el=document.createElement('div');el.className='confetti';el.style.background=COLORS[i%COLORS.length];el.style.left=x+'px';el.style.top=y+'px';document.body.appendChild(el);const a=Math.random()*6.28,v=130+Math.random()*280,dx=Math.cos(a)*v,dy=Math.sin(a)*v-200,rot=Math.random()*560-280;el.animate([{transform:'translate(0,0) rotate(0deg)',opacity:1},{transform:'translate('+dx+'px,'+(dy+340)+'px) rotate('+rot+'deg)',opacity:0}],{duration:1000+Math.random()*600,easing:'cubic-bezier(.17,.67,.35,1)'}).onfinish=()=>el.remove()}}
+function cannons(){confettiAt(innerWidth*.5,innerHeight*.32,64);setTimeout(()=>{confettiAt(innerWidth*.18,innerHeight*.55,32);confettiAt(innerWidth*.84,innerHeight*.55,32)},280)}
+document.querySelector('.giftbox').addEventListener('pointerdown',e=>confettiAt(e.clientX||innerWidth/2,e.clientY||innerHeight/2,40));
 /* ambient sparkle field */
-var cv=document.createElement('canvas');cv.id='fx-canvas';document.body.prepend(cv);
-var ctx=cv.getContext('2d'),W,H,ps=[];
-function size(){var d=Math.min(window.devicePixelRatio||1,2);W=cv.width=innerWidth*d;H=cv.height=innerHeight*d;cv.style.width=innerWidth+'px';cv.style.height=innerHeight+'px'}
-size();addEventListener('resize',size);
-for(var i=0;i<66;i++)ps.push({x:Math.random(),y:Math.random(),r:1.1+Math.random()*3.1,s:.00022+Math.random()*.0005,ph:Math.random()*6.28,c:COLORS[i%COLORS.length],dr:(Math.random()-.5)*.00012});
-(function loop(t){ctx.clearRect(0,0,W,H);ps.forEach(function(p){p.y-=p.s;p.x+=p.dr+Math.sin(t/1600+p.ph)*.00004;if(p.y<-.02){p.y=1.02;p.x=Math.random()}var tw=.35+.65*Math.abs(Math.sin(t/700+p.ph));ctx.globalAlpha=tw*.92;ctx.fillStyle=p.c;ctx.shadowColor=p.c;ctx.shadowBlur=8;ctx.beginPath();ctx.arc(p.x*W,p.y*H,p.r*(W/900+0.6),0,6.29);ctx.fill()});ctx.globalAlpha=1;requestAnimationFrame(loop)})(0);
-/* confetti burst */
-window.fxBurst=function(x,y,n){n=n||42;for(var i=0;i<n;i++){var el=document.createElement('div');el.className='fx-confetti';el.style.background=COLORS[i%COLORS.length];el.style.left=x+'px';el.style.top=y+'px';document.body.appendChild(el);var a=Math.random()*6.28,v=120+Math.random()*260,dx=Math.cos(a)*v,dy=Math.sin(a)*v-190,rot=Math.random()*540-270;el.animate([{transform:'translate(0,0) rotate(0deg)',opacity:1},{transform:'translate('+dx+'px,'+(dy+330)+'px) rotate('+rot+'deg)',opacity:0}],{duration:950+Math.random()*550,easing:'cubic-bezier(.17,.67,.35,1)'}).onfinish=(function(e){return function(){e.remove()}})(el)}};
-/* bursts: gift tap + finale screen */
-var screens=[].slice.call(document.querySelectorAll('.screen'));
-var gift=document.querySelector('.giftbox');
-if(gift)gift.addEventListener('pointerdown',function(e){fxBurst(e.clientX||innerWidth/2,e.clientY||innerHeight/2,54)});
-var last=screens[screens.length-1];
-var fired=false;
-var obs=new MutationObserver(function(){if(last&&last.classList.contains('active')&&!fired){fired=true;setTimeout(function(){fxBurst(innerWidth*.5,innerHeight*.34,70);setTimeout(function(){fxBurst(innerWidth*.22,innerHeight*.5,34);fxBurst(innerWidth*.8,innerHeight*.5,34)},260)},350)}});
-if(last)obs.observe(last,{attributes:true,attributeFilter:['class']});
-/* copy-button pop */
-document.addEventListener('click',function(e){var b=e.target.closest?e.target.closest('.btn'):null;if(b){b.classList.remove('fx-pop');void b.offsetWidth;b.classList.add('fx-pop')}});
-});
-})();
-</script>
-
-<style id="fx2-style">
-.screen{position:relative;overflow:hidden}
-.fx-float{position:absolute;width:96px;z-index:3;pointer-events:none;filter:drop-shadow(0 12px 20px rgba(0,0,0,.5));animation:fxBob 4.2s ease-in-out infinite}
-.fx-float.f1{top:64px;left:-14px;transform:rotate(-10deg)}
-.fx-float.f2{bottom:118px;right:-12px;width:84px;transform:rotate(9deg);animation-delay:-2.1s}
-@keyframes fxBob{0%,100%{margin-top:0}50%{margin-top:-14px}}
-.giftbox{filter:drop-shadow(0 0 26px rgba(255,215,106,.45))}
-</style>
-
-<style id="fx2-style">
-.screen{position:relative;overflow:hidden}
-.fx-float{position:absolute;z-index:3;pointer-events:none;animation:fxBob 4.2s ease-in-out infinite}
-.fx-float.f1{top:58px;left:8px;width:88px;transform:rotate(-9deg);filter:drop-shadow(0 0 16px rgba(255,79,163,.55)) drop-shadow(0 10px 14px rgba(0,0,0,.35))}
-.fx-float.f2{bottom:128px;right:8px;width:78px;transform:rotate(8deg);animation-delay:-2.1s;filter:drop-shadow(0 0 16px rgba(255,215,106,.55)) drop-shadow(0 10px 14px rgba(0,0,0,.35))}
-.fx-mini{position:absolute;z-index:2;pointer-events:none;width:58px;opacity:.96;animation:fxBob 5s ease-in-out infinite}
-.fx-mini.m1{top:14px;right:10px;transform:rotate(10deg);filter:drop-shadow(0 0 12px rgba(255,215,106,.5)) drop-shadow(0 8px 12px rgba(0,0,0,.3))}
-.fx-mini.m2{bottom:104px;left:8px;width:50px;transform:rotate(-11deg);animation-delay:-2.6s;filter:drop-shadow(0 0 12px rgba(178,107,255,.55)) drop-shadow(0 8px 12px rgba(0,0,0,.3))}
-@keyframes fxBob{0%,100%{margin-top:0}50%{margin-top:-13px}}
-.giftbox{filter:drop-shadow(0 0 30px rgba(255,215,106,.55))}
-.card{background:rgba(255,255,255,.09)!important;border-color:rgba(255,255,255,.22)!important;box-shadow:0 14px 34px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.18)}
-body{background:radial-gradient(58% 42% at 18% 0%,rgba(255,196,48,.42),transparent 62%),radial-gradient(55% 45% at 85% 12%,rgba(255,120,40,.28),transparent 65%),radial-gradient(70% 55% at 50% 108%,rgba(255,79,163,.22),transparent 62%),linear-gradient(180deg,#241a08 0%,#171106 55%,#20180a 100%)!important}
-</style>
-<script id="fx2-js">
-document.addEventListener('DOMContentLoaded',function(){
-var pool=['img/st1.png','img/st2.png','img/st3.png','img/st4.png','img/st5.png'];
-document.querySelectorAll('.screen').forEach(function(s,i){
-if(s.querySelector('.giftbox'))return;
-var a=document.createElement('img');a.className='fx-mini m1';a.src=pool[i%pool.length];a.alt='';s.appendChild(a);
-var b=document.createElement('img');b.className='fx-mini m2';b.src=pool[(i+2)%pool.length];b.alt='';s.appendChild(b);
-});
-});
+(function(){const cv=document.getElementById('sparkles'),ctx=cv.getContext('2d');let W,H;const ps=[];function size(){const d=Math.min(devicePixelRatio||1,2);W=cv.width=innerWidth*d;H=cv.height=innerHeight*d;cv.style.width=innerWidth+'px';cv.style.height=innerHeight+'px'}size();addEventListener('resize',size);for(let i=0;i<60;i++)ps.push({x:Math.random(),y:Math.random(),r:1.1+Math.random()*3,s:.00022+Math.random()*.0005,ph:Math.random()*6.28,c:COLORS[i%COLORS.length],dr:(Math.random()-.5)*.00012});(function loop(t){ctx.clearRect(0,0,W,H);ps.forEach(p=>{p.y-=p.s;p.x+=p.dr+Math.sin(t/1600+p.ph)*.00004;if(p.y<-.02){p.y=1.02;p.x=Math.random()}const tw=.35+.65*Math.abs(Math.sin(t/700+p.ph));ctx.globalAlpha=tw*.9;ctx.fillStyle=p.c;ctx.shadowColor=p.c;ctx.shadowBlur=8;ctx.beginPath();ctx.arc(p.x*W,p.y*H,p.r*(W/900+.6),0,6.29);ctx.fill()});ctx.globalAlpha=1;requestAnimationFrame(loop)})(0)})();
 </script>
 </body>
 </html>
