@@ -47,7 +47,7 @@ h1,h2{font-family:Anton,Impact,sans-serif;letter-spacing:.5px;line-height:1.04;t
 .small{font-size:15px;color:#f2e7c8;line-height:1.6;max-width:44ch}
 .credit{font-size:13px;color:#cbbd8f;line-height:1.7}
 /* cover */
-.giftbox{font-size:118px;cursor:pointer;filter:drop-shadow(0 0 38px rgba(245,197,66,.65));animation:bob 2.6s ease-in-out infinite;transition:transform .2s var(--spring)}
+img.giftbox{width:202px;height:auto}.giftbox{font-size:118px;cursor:pointer;filter:drop-shadow(0 0 38px rgba(245,197,66,.65));animation:bob 2.6s ease-in-out infinite;transition:transform .2s var(--spring)}
 .giftbox:active{transform:scale(.92) rotate(-3deg)}
 @keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-13px) rotate(2deg)}}
 .ring{border:2px solid rgba(245,197,66,.6);border-radius:50%;padding:30px;box-shadow:0 0 70px rgba(245,197,66,.4),inset 0 0 46px rgba(245,197,66,.2);animation:pulse 2.6s ease-in-out infinite}
@@ -112,7 +112,7 @@ textarea{width:100%;min-height:150px;background:rgba(16,12,3,.8);color:#fdf6dd;b
   <img class="float f2" src="img/st5.png" alt="">
   <div style="height:22px"></div>
   <span class="tag">A gift for Kendra Kreatedit 💛</span>
-  <div class="ring"><div class="giftbox" onclick="openGift()">🎁</div></div>
+  <div class="ring"><img class="giftbox" src="img/gift.png" alt="Your gift" onclick="openGift()"></div>
   <h1 class="marq">Your gift<br><span class="gold-text">is here</span></h1>
   <p class="small">From Glam, with love — for the Kreator herself,<br>of Kreator University · The Kreative Kommunity.</p>
   <button class="btn" onclick="openGift()">Tap to open 🎀</button>
