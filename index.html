@@ -220,5 +220,29 @@ document.addEventListener('click',function(e){var b=e.target.closest?e.target.cl
 @keyframes fxBob{0%,100%{margin-top:0}50%{margin-top:-14px}}
 .giftbox{filter:drop-shadow(0 0 26px rgba(255,215,106,.45))}
 </style>
+
+<style id="fx2-style">
+.screen{position:relative;overflow:hidden}
+.fx-float{position:absolute;z-index:3;pointer-events:none;animation:fxBob 4.2s ease-in-out infinite}
+.fx-float.f1{top:58px;left:8px;width:88px;transform:rotate(-9deg);filter:drop-shadow(0 0 16px rgba(255,79,163,.55)) drop-shadow(0 10px 14px rgba(0,0,0,.35))}
+.fx-float.f2{bottom:128px;right:8px;width:78px;transform:rotate(8deg);animation-delay:-2.1s;filter:drop-shadow(0 0 16px rgba(255,215,106,.55)) drop-shadow(0 10px 14px rgba(0,0,0,.35))}
+.fx-mini{position:absolute;z-index:2;pointer-events:none;width:58px;opacity:.96;animation:fxBob 5s ease-in-out infinite}
+.fx-mini.m1{top:14px;right:10px;transform:rotate(10deg);filter:drop-shadow(0 0 12px rgba(255,215,106,.5)) drop-shadow(0 8px 12px rgba(0,0,0,.3))}
+.fx-mini.m2{bottom:104px;left:8px;width:50px;transform:rotate(-11deg);animation-delay:-2.6s;filter:drop-shadow(0 0 12px rgba(178,107,255,.55)) drop-shadow(0 8px 12px rgba(0,0,0,.3))}
+@keyframes fxBob{0%,100%{margin-top:0}50%{margin-top:-13px}}
+.giftbox{filter:drop-shadow(0 0 30px rgba(255,215,106,.55))}
+.card{background:rgba(255,255,255,.09)!important;border-color:rgba(255,255,255,.22)!important;box-shadow:0 14px 34px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.18)}
+body{background:radial-gradient(58% 42% at 18% 0%,rgba(255,196,48,.42),transparent 62%),radial-gradient(55% 45% at 85% 12%,rgba(255,120,40,.28),transparent 65%),radial-gradient(70% 55% at 50% 108%,rgba(255,79,163,.22),transparent 62%),linear-gradient(180deg,#241a08 0%,#171106 55%,#20180a 100%)!important}
+</style>
+<script id="fx2-js">
+document.addEventListener('DOMContentLoaded',function(){
+var pool=['img/st1.png','img/st2.png','img/st3.png','img/st4.png','img/st5.png'];
+document.querySelectorAll('.screen').forEach(function(s,i){
+if(s.querySelector('.giftbox'))return;
+var a=document.createElement('img');a.className='fx-mini m1';a.src=pool[i%pool.length];a.alt='';s.appendChild(a);
+var b=document.createElement('img');b.className='fx-mini m2';b.src=pool[(i+2)%pool.length];b.alt='';s.appendChild(b);
+});
+});
+</script>
 </body>
 </html>
