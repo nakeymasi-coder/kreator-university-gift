@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>A Gift for Kendra — Kreator University</title>
+<meta name="description" content="A glamified gift for Kendra Kreatedit of Kreator University. Learn It. Kreate It. Launch It.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="theme-color" content="#0a0a0f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--pink:#ff2e88;--purple:#8b2fe0;--gold:#f5c542;--gold2:#ffe9a3;--ink:#0a0a0f;--card:#17101f}
+body{background:radial-gradient(1200px 800px at 50% -10%,#2a1140 0%,var(--ink) 55%);color:#fff;font-family:Montserrat,system-ui,sans-serif;min-height:100dvh;overflow-x:hidden}
+.wrap{max-width:520px;margin:0 auto;padding:18px 16px 30px;min-height:100dvh;display:flex;flex-direction:column}
+h1,h2{font-family:Anton,Impact,sans-serif;letter-spacing:.5px;line-height:1.05;text-transform:uppercase}
+.gold-text{background:linear-gradient(180deg,var(--gold2),var(--gold) 55%,#c9931b);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pink-text{color:var(--pink)}
+.screen{display:none;flex-direction:column;align-items:center;text-align:center;gap:14px;animation:fade .45s ease both}
+.screen.active{display:flex}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.giftbox{font-size:110px;filter:drop-shadow(0 0 34px rgba(255,46,136,.65));animation:bob 2.2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-12px) rotate(2deg)}}
+.ring{border:2px solid rgba(245,197,66,.5);border-radius:50%;padding:26px;box-shadow:0 0 60px rgba(139,47,224,.45),inset 0 0 40px rgba(255,46,136,.25);animation:pulse 2.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+.btn{font-family:Anton,Impact,sans-serif;text-transform:uppercase;letter-spacing:1px;font-size:19px;color:#14091f;background:linear-gradient(180deg,var(--gold2),var(--gold));border:none;border-radius:999px;padding:15px 34px;cursor:pointer;box-shadow:0 6px 26px rgba(245,197,66,.45);transition:transform .15s}
+.btn:active{transform:scale(.96)}
+.btn.pink{background:linear-gradient(180deg,#ff6aa9,var(--pink));color:#fff;box-shadow:0 6px 26px rgba(255,46,136,.45)}
+.btn.ghost{background:transparent;color:var(--gold2);border:2px solid rgba(245,197,66,.6);box-shadow:none;font-size:15px;padding:11px 24px}
+.card{background:linear-gradient(180deg,#1d1229,var(--card));border:1px solid rgba(245,197,66,.35);border-radius:22px;padding:20px 18px;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.card p{font-size:16.5px;line-height:1.55;color:#f3eafd}
+img.art{width:100%;border-radius:18px;border:1px solid rgba(245,197,66,.4);box-shadow:0 12px 44px rgba(139,47,224,.35)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%}
+.grid figure{background:#120b1a;border:1px solid rgba(255,46,136,.35);border-radius:16px;padding:10px}
+.grid img{width:100%;border-radius:10px}
+.grid figcaption{font-size:12.5px;font-weight:800;color:var(--gold2);margin-top:7px;text-transform:uppercase;letter-spacing:.6px}
+.nav{margin-top:auto;padding-top:18px;display:flex;align-items:center;justify-content:space-between;width:100%}
+.dots{display:flex;gap:6px}
+.dot{width:8px;height:8px;border-radius:50%;background:#3d2a55}
+.dot.on{background:var(--gold);box-shadow:0 0 10px var(--gold)}
+textarea{width:100%;min-height:150px;background:#0d0817;color:#e9defc;border:1px solid rgba(139,47,224,.55);border-radius:14px;padding:12px;font-family:Montserrat,sans-serif;font-size:13.5px;line-height:1.5;resize:vertical}
+.tag{display:inline-block;background:rgba(255,46,136,.16);border:1px solid rgba(255,46,136,.55);color:#ffb9d6;border-radius:999px;padding:6px 14px;font-size:12.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase}
+.big{font-size:clamp(38px,10vw,54px)}
+.mid{font-size:clamp(27px,7.4vw,36px)}
+.small{font-size:14.5px;color:#cbb8ea;line-height:1.55}
+.credit{font-size:13px;color:#9d86c4}
+.sparkle{position:fixed;pointer-events:none;font-size:20px;animation:fall linear forwards;z-index:50}
+@keyframes fall{to{transform:translateY(105dvh) rotate(300deg);opacity:.2}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- COVER -->
+<section class="screen active" data-screen>
+  <div style="height:26px"></div>
+  <span class="tag">A gift for Kendra Kreatedit 💛</span>
+  <div class="ring"><div class="giftbox">🎁</div></div>
+  <h1 class="big">Your gift<br><span class="gold-text">is here</span></h1>
+  <p class="small">From Glam, with love — for the Kreator herself,<br>of Kreator University · The Kreative Kommunity.</p>
+  <button class="btn" onclick="openGift()">Tap to open 🎀</button>
+</section>
+
+<!-- GLAMIFIED -->
+<section class="screen" data-screen>
+  <div style="height:30px"></div>
+  <div style="font-size:74px">✨🦋✨</div>
+  <h1 class="big"><span class="pink-text">You’ve been</span><br><span class="gold-text">Glamified!</span></h1>
+  <div class="card"><p>Kendra — night after night you show up and build generators live for your Kreators, and you ask for nothing back. This is a little thank you for all that you do. 💛</p></div>
+  <button class="btn pink" onclick="go(2)">See your gift →</button>
+</section>
+
+<!-- HERO -->
+<section class="screen" data-screen>
+  <span class="tag">The piece 🎬</span>
+  <h2 class="mid">Learn it. Kreate it.<br><span class="gold-text">Launch it.</span></h2>
+  <img class="art" src="img/hero.png" alt="Kendra at her generator — Kreator University">
+  <p class="small">You, at your generator, doing what you do every night — turning ideas into digital income while the creations fly. ✨</p>
+</section>
+
+<!-- CHARACTER -->
+<section class="screen" data-screen>
+  <span class="tag">Your character ⭐</span>
+  <h2 class="mid">She’s <span class="gold-text">yours to name</span></h2>
+  <img class="art" src="img/sheet.png" alt="Kendra's character sheet with blank nameplate">
+  <p class="small">Your very own reusable character, in your black and gold. See the empty nameplate at the top? Naming her is YOUR honor, boo. 💛</p>
+</section>
+
+<!-- BOARD -->
+<section class="screen" data-screen>
+  <span class="tag">Your brand board 🎨</span>
+  <h2 class="mid">Kreator <span class="gold-text">University</span></h2>
+  <img class="art" src="img/board.png" alt="Kreator University brand board">
+  <p class="small">Your character, your generator, your colors — <b>Where Ideas Become Digital Income.</b> Use her anywhere, any time. She’s yours.</p>
+</section>
+
+<!-- STICKERS -->
+<section class="screen" data-screen>
+  <span class="tag">Your sticker pack 💛</span>
+  <h2 class="mid">Made for your <span class="pink-text">lives & community</span></h2>
+  <div class="grid">
+    <figure><img src="img/st1.png" alt="Hey Kreators sticker"><figcaption>Hey, Kreators!</figcaption></figure>
+    <figure><img src="img/st2.png" alt="Learn It Kreate It Launch It sticker"><figcaption>Learn It. Kreate It. Launch It.</figcaption></figure>
+    <figure><img src="img/st3.png" alt="Kreate sticker"><figcaption>Kreate!</figcaption></figure>
+    <figure><img src="img/st4.png" alt="Create Automate Elevate Monetize sticker"><figcaption>Create. Automate. Elevate. Monetize.</figcaption></figure>
+    <figure><img src="img/st5.png" alt="Thank You Boo sticker"><figcaption>Thank You, Boo!</figcaption></figure>
+    <figure><img src="img/hero.png" alt="Kreator University hero art"><figcaption>Your Generator Art</figcaption></figure>
+  </div>
+  <p class="small">The clean sticker files are coming to you directly from Glam — drop them on your lives, in your community, everywhere. ✨</p>
+</section>
+
+<!-- PROMPT -->
+<section class="screen" data-screen>
+  <span class="tag">The prompt 📝</span>
+  <h2 class="mid">Yours to <span class="gold-text">remake forever</span></h2>
+  <p class="small" style="text-align:left;width:100%"><b>The prompt behind your hero art:</b></p>
+  <textarea readonly id="p1">Square 1:1 vibrant cartoon illustration, glossy 3D animated-movie finish with bold clean outlines. A confident plus-size Black woman with long braids and a glam gold-and-pink outfit stands at a big black-and-gold GENERATOR machine in a classroom studio, joyfully pulling a big lever. Creations fly out of the machine around her: t-shirts, tumblers, sticker sheets and journals, with gold sparkles everywhere. Behind her a black wall sign with a gold shield logo and the words KREATOR UNIVERSITY. Palette: deep black, metallic gold and yellow, white, with hot pink accents from her outfit. Big gold marquee headline across the top: LEARN IT. KREATE IT. LAUNCH IT. Smaller white line across the bottom: Where Ideas Become Digital Income. No crowns anywhere. No other text.</textarea>
+  <button class="btn ghost" onclick="copyT('p1',this)">Copy the prompt</button>
+  <p class="small">Run it through your own generator magic and make her a hundred more scenes. That part’s your superpower. 💛</p>
+</section>
+
+<!-- FINALE -->
+<section class="screen" data-screen>
+  <span class="tag">From Glam 💛</span>
+  <h2 class="mid">Create. Automate.<br><span class="gold-text">Elevate. Monetize.</span></h2>
+  <div class="card"><p>You teach everybody else how to turn their creativity into income. This time, the gift is for the teacher. Thank you for all that you do, Kendra. 🖤💛</p></div>
+  <p class="credit">Gifted with love by Glam · Glam Hustle Hub ✨<br>Made for Kendra Kreatedit · Kreator University</p>
+  <button class="btn pink" onclick="go(0)">↺ Open it again</button>
+</section>
+
+<div class="nav" id="nav" style="visibility:hidden">
+  <button class="btn ghost" onclick="step(-1)">← Back</button>
+  <div class="dots" id="dots"></div>
+  <button class="btn ghost" onclick="step(1)">Next →</button>
+</div>
+</div>
+<script>
+const screens=[...document.querySelectorAll('[data-screen]')];
+const dotsBox=document.getElementById('dots');
+screens.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' on':'');dotsBox.appendChild(d)});
+let cur=0;
+function go(i){screens[cur].classList.remove('active');cur=Math.max(0,Math.min(screens.length-1,i));screens[cur].classList.add('active');[...dotsBox.children].forEach((d,j)=>d.classList.toggle('on',j===cur));document.getElementById('nav').style.visibility=cur===0?'hidden':'visible';window.scrollTo({top:0,behavior:'smooth'})}
+function step(d){go(cur+d)}
+function openGift(){burst();go(1)}
+function burst(){const em=['✨','💜','⭐','🎉','💛'];for(let i=0;i<26;i++){const s=document.createElement('div');s.className='sparkle';s.textContent=em[i%em.length];s.style.left=(Math.random()*96)+'vw';s.style.top='-30px';s.style.animationDuration=(1.4+Math.random()*1.6)+'s';document.body.appendChild(s);setTimeout(()=>s.remove(),3400)}}
+function copyT(id,btn){const t=document.getElementById(id);t.select();t.setSelectionRange(0,99999);navigator.clipboard.writeText(t.value).then(()=>{const o=btn.textContent;btn.textContent='Copied! ✓';setTimeout(()=>btn.textContent=o,1600)})}
+</script>
+</body>
+</html>
